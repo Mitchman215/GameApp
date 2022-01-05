@@ -9,5 +9,5 @@ import Foundation
 
 class GameModel: ObservableObject {
     
-    @Published var currentGame: String?
+    @Published var currentGame: AvailableGames?
 }

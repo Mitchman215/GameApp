@@ -16,6 +16,7 @@
 		A27D8F2C2785F4CC005FBC91 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F2B2785F4CC005FBC91 /* SelectionView.swift */; };
 		A27D8F2E2785F7BE005FBC91 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F2D2785F7BE005FBC91 /* GameModel.swift */; };
 		A27D8F312785F8CA005FBC91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F302785F8CA005FBC91 /* Constants.swift */; };
+		A27D8F332786043D005FBC91 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F322786043D005FBC91 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		A27D8F2B2785F4CC005FBC91 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		A27D8F2D2785F7BE005FBC91 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		A27D8F302785F8CA005FBC91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A27D8F322786043D005FBC91 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		A27D8F282785F438005FBC91 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A27D8F322786043D005FBC91 /* Game.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				A27D8F312785F8CA005FBC91 /* Constants.swift in Sources */,
 				A27D8F2C2785F4CC005FBC91 /* SelectionView.swift in Sources */,
 				A27D8F2E2785F7BE005FBC91 /* GameModel.swift in Sources */,
+				A27D8F332786043D005FBC91 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
