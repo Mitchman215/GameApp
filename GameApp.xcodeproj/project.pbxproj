@@ -17,6 +17,9 @@
 		A27D8F2E2785F7BE005FBC91 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F2D2785F7BE005FBC91 /* GameModel.swift */; };
 		A27D8F312785F8CA005FBC91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F302785F8CA005FBC91 /* Constants.swift */; };
 		A27D8F332786043D005FBC91 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F322786043D005FBC91 /* Game.swift */; };
+		A27D8F35278BF19E005FBC91 /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F34278BF19D005FBC91 /* Chess.swift */; };
+		A27D8F37278CE4D5005FBC91 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F36278CE4D5005FBC91 /* TicTacToe.swift */; };
+		A27D8F39278CE4F0005FBC91 /* Connect4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F38278CE4F0005FBC91 /* Connect4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		A27D8F2D2785F7BE005FBC91 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		A27D8F302785F8CA005FBC91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A27D8F322786043D005FBC91 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		A27D8F34278BF19D005FBC91 /* Chess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess.swift; sourceTree = "<group>"; };
+		A27D8F36278CE4D5005FBC91 /* TicTacToe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe.swift; sourceTree = "<group>"; };
+		A27D8F38278CE4F0005FBC91 /* Connect4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				A27D8F322786043D005FBC91 /* Game.swift */,
+				A27D8F34278BF19D005FBC91 /* Chess.swift */,
+				A27D8F36278CE4D5005FBC91 /* TicTacToe.swift */,
+				A27D8F38278CE4F0005FBC91 /* Connect4.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,11 +204,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A27D8F35278BF19E005FBC91 /* Chess.swift in Sources */,
 				A27D8F1E2785F274005FBC91 /* Persistence.swift in Sources */,
 				A27D8F172785F272005FBC91 /* ContentView.swift in Sources */,
 				A27D8F152785F272005FBC91 /* GameApp.swift in Sources */,
+				A27D8F37278CE4D5005FBC91 /* TicTacToe.swift in Sources */,
 				A27D8F212785F274005FBC91 /* GameApp.xcdatamodeld in Sources */,
 				A27D8F312785F8CA005FBC91 /* Constants.swift in Sources */,
+				A27D8F39278CE4F0005FBC91 /* Connect4.swift in Sources */,
 				A27D8F2C2785F4CC005FBC91 /* SelectionView.swift in Sources */,
 				A27D8F2E2785F7BE005FBC91 /* GameModel.swift in Sources */,
 				A27D8F332786043D005FBC91 /* Game.swift in Sources */,

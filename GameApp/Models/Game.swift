@@ -48,34 +48,18 @@ enum Player {
 
 class Piece {
     let player: Player
-    
     init(player: Player) {
         self.player = player
-    }
-}
-
-enum ChessPieceType {
-    case pawn
-    case knight
-    case bishop
-    case rook
-    case queen
-    case king
-}
-
-class ChessPiece: Piece {
-    let type: ChessPieceType
-    
-    init(player: Player, type: ChessPieceType) {
-        self.type = type
-        super.init(player: player)
     }
 }
 
 protocol Game {
     var gameType: AvailableGames { get }
     var player0Name: String { get }
+}
+
+protocol TwoPlayerBoardGame: Game {
     var player1Name: String { get }
-    var board: [[Piece]] { get set }
+    var board: [[Piece?]] { get set }
     var whoseTurn: Player { get set }
 }
