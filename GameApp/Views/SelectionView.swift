@@ -14,13 +14,22 @@ struct SelectionView: View {
                 .bold()
                 .padding(.top, 40)
                 .font(.title)
-            GeometryReader { geo in
-                
+        
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 20, alignment: .top),
+                                    GridItem(.flexible(), spacing: 20, alignment: .top)],
+                          alignment: .center, spacing: 20) {
+                    
+                    ForEach(AvailableGames.allCases, id: \.self) { game in
+                        VStack {
+                            Image(game.imageName)
+                                .resizable()
+                                .scaledToFill()
+                        }
+                    }
+                }
             }
-            
         }
-        
-        
     }
 }
 

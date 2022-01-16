@@ -22,6 +22,7 @@
 		A27D8F39278CE4F0005FBC91 /* Connect4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F38278CE4F0005FBC91 /* Connect4.swift */; };
 		A27D8F3B278D42E1005FBC91 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F3A278D42E1005FBC91 /* Stack.swift */; };
 		A27D8F3D278D4382005FBC91 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F3C278D4382005FBC91 /* LinkedList.swift */; };
+		A27D8F3F27938ACF005FBC91 /* MemorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F3E27938ACE005FBC91 /* MemorizeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A27D8F38278CE4F0005FBC91 /* Connect4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect4.swift; sourceTree = "<group>"; };
 		A27D8F3A278D42E1005FBC91 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		A27D8F3C278D4382005FBC91 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		A27D8F3E27938ACE005FBC91 /* MemorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				A27D8F162785F272005FBC91 /* ContentView.swift */,
 				A27D8F2B2785F4CC005FBC91 /* SelectionView.swift */,
+				A27D8F3E27938ACE005FBC91 /* MemorizeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				A27D8F152785F272005FBC91 /* GameApp.swift in Sources */,
 				A27D8F3B278D42E1005FBC91 /* Stack.swift in Sources */,
 				A27D8F37278CE4D5005FBC91 /* TicTacToe.swift in Sources */,
+				A27D8F3F27938ACF005FBC91 /* MemorizeView.swift in Sources */,
 				A27D8F212785F274005FBC91 /* GameApp.xcdatamodeld in Sources */,
 				A27D8F312785F8CA005FBC91 /* Constants.swift in Sources */,
 				A27D8F39278CE4F0005FBC91 /* Connect4.swift in Sources */,

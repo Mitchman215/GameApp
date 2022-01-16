@@ -12,6 +12,7 @@ enum AvailableGames: String, CaseIterable {
     case ticTacToe = "Tic-Tac-Toe"
     case connect4 = "Connect Four"
     case chess = "Chess"
+    case memorize = "Memorize"
     
     var name: String {self.rawValue}
     var imageName: String {name}
@@ -36,6 +37,12 @@ enum AvailableGames: String, CaseIterable {
                     their opponents pieces.
                     In order to win, one player must checkmate the other by threatening to capture their king
                     and preventing the king from being able to escape.
+                    """
+        case .memorize:
+            return """
+                    Memorize is a singleplayer game where pairs of face-down cards must be matched with each other.
+                    A maximum of two cards can be face up at one time, and if a match is not established between those two cards,
+                    they will be flipped over again. The goal is to match all the cards in the shortest time.
                     """
         }
     }
