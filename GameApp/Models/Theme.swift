@@ -25,8 +25,8 @@ struct Theme {
               color: "orange", numberOfStartingPairs: 11),
         Theme(name: "Fruits", emojis: ["🍑", "🍎", "🍉", "🍌", "🍓", "🍐", "🍍", "🍊", "🥝"], color: "yellow"),
         Theme(name: "Animals", emojis: ["🐒", "🦄", "🦉", "🐘", "🐖", "🐿", "🦧", "🦍", "🦅", "🐢"], color: "red"),
-        Theme(name: "Sports", emojis: ["⚽️", "🏓", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏆", "🏒"], color: "white"),
+        Theme(name: "Sports", emojis: ["⚽️", "🏓", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏆", "🏒"], color: "green"),
         Theme(name: "Flags", emojis: ["🇩🇪", "🇯🇵", "🇰🇷", "🇷🇺", "🇬🇧", "🇺🇸", "🇫🇷", "🇨🇳", "🇮🇳", "🇮🇩", "🇳🇵"], color: "blue"),
-        Theme(name: "Tools", emojis: ["🪚", "🛠", "🪓", "⛏", "🪛", "🔦", "🧰"], color: "black")
+        Theme(name: "Tools", emojis: ["🪚", "🛠", "🪓", "⛏", "🪛", "🔦", "🧰"], color: "brown")
     ]
 }

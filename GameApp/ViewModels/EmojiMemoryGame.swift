@@ -8,10 +8,17 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    let selectedTheme: Theme
+    private(set) var selectedTheme: Theme
     @Published private var model: MemoryGame<String>
     var cards: [MemoryGame<String>.Card] {
         model.cards
+    }
+    
+    private let colorsDictionary: [String: Color] = [
+        "white": .white, "orange": .orange, "red": .red, "black": .black, "blue": .blue, "purple": .purple,
+        "brown": .brown, "yellow": .yellow, "green": .green, "gray": .gray, "pink": .pink, "cyan": .cyan]
+    var color: Color {
+        colorsDictionary[selectedTheme.color] ?? .gray
     }
     
     private init(with theme: Theme) {
@@ -30,13 +37,13 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
-    
-    static func colorize(colorName: String) -> Color {
-        return Color(colorName)
+    // MARK: - Intent(s)
+    func choose(_ card: MemoryGame<String>.Card) {
+        model.choose(card)
     }
     
-    // MARK: - Intent(s)
-    func chose(_ card: MemoryGame<String>.Card) {
-        model.choose(card)
+    func startNewGame() {
+        selectedTheme = Theme.defaults.randomElement()!
+        model = EmojiMemoryGame.createNewGame(with: selectedTheme)
     }
 }

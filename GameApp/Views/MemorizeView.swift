@@ -8,81 +8,37 @@
 import SwiftUI
 
 struct MemorizeView: View {
-    enum theme: CaseIterable {
-        case vehicles, fruits, animals
-        
-        var emojis: [String] {
-            switch(self) {
-            case .vehicles: return ["🚕", "🚗", "🚙", "🚌", "🚎", "🏎", "🚜", "🚑"]
-            case .fruits: return ["🍑", "🍎", "🍉", "🍌", "🍓", "🍐", "🍍", "🍊"]
-            case .animals: return ["🐒", "🦄", "🦉", "🐘", "🐖", "🐿", "🦧", "🦍"]
-            }
-        }
-        
-        var iconName: String {
-            switch(self) {
-            case .vehicles: return "car"
-            case .fruits: return "fork.knife"
-            case .animals: return "pawprint"
-            }
-        }
-        
-        var themeName: String {
-            switch(self) {
-            case .vehicles: return "Vehicles"
-            case .fruits: return "Fruits"
-            case .animals: return "Animals"
-            }
-        }
-    }
-    
-    @State private var selectedTheme: theme?
-    private var emojis: [String] {
-        selectedTheme?.emojis.shuffled() ?? []
-    }
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
         VStack {
-            Text("Memorize!")
-                .bold()
-                .font(.largeTitle)
-            
-            if selectedTheme == nil {
-                Spacer()
-                Text("Select a theme from below!")
-                    .font(.title)
-            } else {
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
-                        ForEach(emojis, id: \.self) { emoji in
-                            CardView(content: emoji)
-                                .aspectRatio(2/3, contentMode: .fit)
-                        }
-                    }
-                }
-                .foregroundColor(.red)
-            }
-            
-            Spacer()
-            
             HStack {
-                ForEach(theme.allCases, id: \.self) { theme in
-                    Button {
-                        selectedTheme = theme
-                    } label: {
-                        ZStack {
-                            VStack {
-                                Image(systemName: theme.iconName)
-                                    .font(.largeTitle)
-                                Text(theme.themeName)
-                                    .font(.body)
-                            }
-                            .padding()
-                        }
+                Text("Memorize \(viewModel.selectedTheme.name)!")
+                    .bold()
+                    .font(.title)
+                
+                Button {
+                    viewModel.startNewGame()
+                } label: {
+                    VStack {
+                        Image(systemName: "plus.circle").font(.title)
+                        Text("New Game").font(.subheadline)
                     }
-
                 }
             }
+        
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
+                    ForEach(viewModel.cards) { card in
+                        CardView(card: card)
+                            .aspectRatio(2/3, contentMode: .fit)
+                            .onTapGesture {
+                                viewModel.choose(card)
+                            }
+                    }
+                }
+            }
+            .foregroundColor(viewModel.color)
         }
         .padding(.horizontal)
     }
@@ -91,23 +47,22 @@ struct MemorizeView: View {
 
 
 struct CardView: View {
-    var content: String
-    @State var isFaceUp = true
+    let card: MemoryGame<String>.Card
     
     var body: some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: 20)
-            if isFaceUp {
+            if card.isFaceUp {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: 3)
-                Text(content).font(.largeTitle)
+                Text(card.content).font(.largeTitle)
+            } else if card.isMatched{
+                shape.opacity(0)
             } else {
                 shape.fill()
             }
         }
-        .onTapGesture {
-            isFaceUp = !isFaceUp
-        }
+        
     }
 }
 
@@ -116,8 +71,9 @@ struct CardView: View {
 
 struct MemorizeView_Previews: PreviewProvider {
     static var previews: some View {
-        MemorizeView()
-        MemorizeView()
+        let viewModel = EmojiMemoryGame()
+        MemorizeView(viewModel: viewModel)
+        MemorizeView(viewModel: viewModel)
             .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
