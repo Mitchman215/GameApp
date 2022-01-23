@@ -11,6 +11,8 @@ struct MemoryGame<CardContent> {
     
     private(set) var cards: [Card]
     
+    var score = 0
+    
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         var cards: [Card] = []
         // Fills the cards array with pairs of cards with content determined by `createCardContent`
