@@ -26,6 +26,7 @@
 		A28B582F279668AB0046C8B5 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B582E279668AB0046C8B5 /* MemoryGame.swift */; };
 		A28B5831279A7EC80046C8B5 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B5830279A7EC80046C8B5 /* EmojiMemoryGame.swift */; };
 		A28B5833279DC5CA0046C8B5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B5832279DC5CA0046C8B5 /* Theme.swift */; };
+		A293E3C6279F0CAC0090A465 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		A28B582E279668AB0046C8B5 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		A28B5830279A7EC80046C8B5 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		A28B5832279DC5CA0046C8B5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				A27D8F162785F272005FBC91 /* ContentView.swift */,
 				A27D8F2B2785F4CC005FBC91 /* SelectionView.swift */,
 				A27D8F3E27938ACE005FBC91 /* EmojiMemoryGameView.swift */,
+				A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				A27D8F3B278D42E1005FBC91 /* Stack.swift in Sources */,
 				A27D8F37278CE4D5005FBC91 /* TicTacToe.swift in Sources */,
 				A28B5831279A7EC80046C8B5 /* EmojiMemoryGame.swift in Sources */,
+				A293E3C6279F0CAC0090A465 /* AspectVGrid.swift in Sources */,
 				A27D8F3F27938ACF005FBC91 /* EmojiMemoryGameView.swift in Sources */,
 				A27D8F212785F274005FBC91 /* GameApp.xcdatamodeld in Sources */,
 				A27D8F312785F8CA005FBC91 /* Constants.swift in Sources */,

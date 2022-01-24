@@ -33,20 +33,19 @@ struct EmojiMemoryGameView: View {
             }
             .padding(.horizontal)
         
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
-                    ForEach(theGame.cards) { card in
-                        CardView(card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                theGame.choose(card)
-                            }
-                    }
-                }
+            AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
+                CardView(card)
+                    .padding(Constants.betweenCardsPadding)
+                    .onTapGesture { theGame.choose(card) }
             }
             .foregroundColor(theGame.color)
         }
         .padding(.horizontal)
+    }
+    
+    private struct Constants {
+        static let aspectRatio: CGFloat = 2/3
+        static let betweenCardsPadding: CGFloat = 4
     }
 }
 
@@ -81,9 +80,9 @@ struct CardView: View {
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 20
+        static let cornerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.75
     }
 }
 
