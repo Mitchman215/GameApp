@@ -1,5 +1,5 @@
 //
-//  Memory.swift
+//  Concentration.swift
 //  GameApp
 //
 //  Created by Mitchell Salomon on 1/17/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MemoryGame<CardContent> where CardContent: Equatable {
+struct Concentration<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card]
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {

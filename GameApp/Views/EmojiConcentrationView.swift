@@ -1,5 +1,5 @@
 //
-//  EmojiMemoryGameView.swift
+//  EmojiConcentrationView.swift
 //  GameApp
 //
 //  Created by Mitchell Salomon on 1/15/22.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct EmojiMemoryGameView: View {
-    @ObservedObject var theGame: EmojiMemoryGame
+struct EmojiConcentrationView: View {
+    @ObservedObject var theGame: EmojiConcentration
     
     var body: some View {
         VStack {
@@ -26,7 +26,7 @@ struct EmojiMemoryGameView: View {
     
     private func topUI() -> some View {
         VStack {
-            Text("Memorize \(theGame.selectedTheme.name)!")
+            Text("Match the \(theGame.selectedTheme.name)!")
                 .bold()
                 .font(.largeTitle)
             
@@ -56,9 +56,9 @@ struct EmojiMemoryGameView: View {
 
 
 struct CardView: View {
-    private let card: EmojiMemoryGame.Card
+    private let card: EmojiConcentration.Card
     
-    init(_ card: EmojiMemoryGame.Card) {
+    init(_ card: EmojiConcentration.Card) {
         self.card = card
     }
     
@@ -100,9 +100,9 @@ struct CardView: View {
 
 struct MemorizeView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame()
+        let game = EmojiConcentration()
         game.choose(game.cards.first!)
-        return EmojiMemoryGameView(theGame: game)
+        return EmojiConcentrationView(theGame: game)
 //        EmojiMemoryGameView(theGame: game)
 //            .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }

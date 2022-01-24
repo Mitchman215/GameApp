@@ -11,11 +11,11 @@ import SwiftUI
 struct GameApp: App {
     let persistenceController = PersistenceController.shared
     
-    private let game = EmojiMemoryGame()
+    private let game = EmojiConcentration()
 
     var body: some Scene {
         WindowGroup {
-            EmojiMemoryGameView(theGame: game)
+            EmojiConcentrationView(theGame: game)
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

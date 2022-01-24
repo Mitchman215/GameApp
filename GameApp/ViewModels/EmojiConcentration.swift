@@ -1,5 +1,5 @@
 //
-//  EmojiMemoryGame.swift
+//  EmojiConcentration.swift
 //  GameApp
 //
 //  Created by Mitchell Salomon on 1/21/22.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-class EmojiMemoryGame: ObservableObject {
-    typealias Card = MemoryGame<String>.Card
+class EmojiConcentration: ObservableObject {
+    typealias Card = Concentration<String>.Card
     
     private(set) var selectedTheme: Theme
-    @Published private var model: MemoryGame<String>
+    @Published private var model: Concentration<String>
     var cards: [Card] {
         model.cards
     }
@@ -28,16 +28,16 @@ class EmojiMemoryGame: ObservableObject {
     
     private init(with theme: Theme) {
         selectedTheme = theme
-        model = EmojiMemoryGame.createNewGame(with: selectedTheme)
+        model = EmojiConcentration.createNewGame(with: selectedTheme)
     }
     
     convenience init() {
         self.init(with: Theme.defaults.randomElement()!)
     }
     
-    static func createNewGame(with theme: Theme) -> MemoryGame<String> {
+    static func createNewGame(with theme: Theme) -> Concentration<String> {
         let shuffledEmojis = theme.emojis.shuffled()
-        return MemoryGame(numberOfPairsOfCards: theme.numberOfStartingPairs) { pairIndex in
+        return Concentration(numberOfPairsOfCards: theme.numberOfStartingPairs) { pairIndex in
             shuffledEmojis[pairIndex]
         }
     }
@@ -49,6 +49,6 @@ class EmojiMemoryGame: ObservableObject {
     
     func startNewGame() {
         selectedTheme = Theme.defaults.randomElement()!
-        model = EmojiMemoryGame.createNewGame(with: selectedTheme)
+        model = EmojiConcentration.createNewGame(with: selectedTheme)
     }
 }
