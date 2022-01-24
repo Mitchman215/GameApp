@@ -12,10 +12,15 @@ struct MemorizeView: View {
     
     var body: some View {
         VStack {
+            Text("Memorize \(viewModel.selectedTheme.name)!")
+                .bold()
+                .font(.largeTitle)
+            
             HStack {
-                Text("Memorize \(viewModel.selectedTheme.name)!")
-                    .bold()
-                    .font(.title)
+                Text("Score: \(viewModel.score)")
+                    .font(.title2)
+                
+                Spacer()
                 
                 Button {
                     viewModel.startNewGame()
@@ -26,6 +31,7 @@ struct MemorizeView: View {
                     }
                 }
             }
+            .padding(.horizontal)
         
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {

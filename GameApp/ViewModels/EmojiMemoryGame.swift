@@ -13,6 +13,9 @@ class EmojiMemoryGame: ObservableObject {
     var cards: [MemoryGame<String>.Card] {
         model.cards
     }
+    var score: Int {
+        model.score
+    }
     
     private let colorsDictionary: [String: Color] = [
         "white": .white, "orange": .orange, "red": .red, "black": .black, "blue": .blue, "purple": .purple,
