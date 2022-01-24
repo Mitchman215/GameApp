@@ -1,5 +1,5 @@
 //
-//  MemorizeView.swift
+//  EmojiMemoryGameView.swift
 //  GameApp
 //
 //  Created by Mitchell Salomon on 1/15/22.
@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct MemorizeView: View {
-    @ObservedObject var viewModel: EmojiMemoryGame
+struct EmojiMemoryGameView: View {
+    @ObservedObject var theGame: EmojiMemoryGame
     
     var body: some View {
         VStack {
-            Text("Memorize \(viewModel.selectedTheme.name)!")
+            Text("Memorize \(theGame.selectedTheme.name)!")
                 .bold()
                 .font(.largeTitle)
             
             HStack {
-                Text("Score: \(viewModel.score)")
+                Text("Score: \(theGame.score)")
                     .font(.title2)
                 
                 Spacer()
                 
                 Button {
-                    viewModel.startNewGame()
+                    theGame.startNewGame()
                 } label: {
                     VStack {
                         Image(systemName: "plus.circle").font(.title)
@@ -35,16 +35,16 @@ struct MemorizeView: View {
         
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 75))]) {
-                    ForEach(viewModel.cards) { card in
-                        CardView(card: card)
+                    ForEach(theGame.cards) { card in
+                        CardView(card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                theGame.choose(card)
                             }
                     }
                 }
             }
-            .foregroundColor(viewModel.color)
+            .foregroundColor(theGame.color)
         }
         .padding(.horizontal)
     }
@@ -53,7 +53,11 @@ struct MemorizeView: View {
 
 
 struct CardView: View {
-    let card: MemoryGame<String>.Card
+    private let card: EmojiMemoryGame.Card
+    
+    init(_ card: EmojiMemoryGame.Card) {
+        self.card = card
+    }
     
     var body: some View {
         ZStack {
@@ -78,8 +82,8 @@ struct CardView: View {
 struct MemorizeView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = EmojiMemoryGame()
-        MemorizeView(viewModel: viewModel)
-        MemorizeView(viewModel: viewModel)
+        EmojiMemoryGameView(theGame: viewModel)
+        EmojiMemoryGameView(theGame: viewModel)
             .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }

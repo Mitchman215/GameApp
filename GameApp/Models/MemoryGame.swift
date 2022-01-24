@@ -10,7 +10,10 @@ import Foundation
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card]
     
-    private var tempIndexOfFaceUpCard: Int?
+    private var indexOfTheOneAndOnlyFaceUpCard: Int? {
+        get { cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly }
+        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
+    }
     
     private(set) var score = 0
     
@@ -30,7 +33,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             !cards[chosenIndex].isFaceUp,
             !cards[chosenIndex].isMatched
         {
-            if let potentialMatchIndex = tempIndexOfFaceUpCard {
+            if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     // Cards are matched
                     cards[chosenIndex].isMatched = true
@@ -45,16 +48,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                         score -= 1
                     }
                 }
-                tempIndexOfFaceUpCard = nil
+                cards[chosenIndex].isFaceUp = true
                 cards[chosenIndex].previouslySeen = true
                 cards[potentialMatchIndex].previouslySeen = true
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
-                tempIndexOfFaceUpCard = chosenIndex
+                indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
-            cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
@@ -65,5 +64,16 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         var isMatched = false
         var previouslySeen = false
         let id: Int
+    }
+}
+
+extension Array {
+    /// If and only if the array contains a single element, return that element. Otherwise, return nil.
+    var oneAndOnly: Element? {
+        if count == 1 {
+            return first
+        } else {
+            return nil
+        }
     }
 }
