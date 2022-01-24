@@ -27,6 +27,7 @@
 		A28B5831279A7EC80046C8B5 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B5830279A7EC80046C8B5 /* EmojiMemoryGame.swift */; };
 		A28B5833279DC5CA0046C8B5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B5832279DC5CA0046C8B5 /* Theme.swift */; };
 		A293E3C6279F0CAC0090A465 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */; };
+		A293E3C8279F32A60090A465 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293E3C7279F32A60090A465 /* Pie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		A28B5830279A7EC80046C8B5 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		A28B5832279DC5CA0046C8B5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		A293E3C7279F32A60090A465 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				A27D8F2B2785F4CC005FBC91 /* SelectionView.swift */,
 				A27D8F3E27938ACE005FBC91 /* EmojiMemoryGameView.swift */,
 				A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */,
+				A293E3C7279F32A60090A465 /* Pie.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				A27D8F35278BF19E005FBC91 /* Chess.swift in Sources */,
 				A27D8F1E2785F274005FBC91 /* Persistence.swift in Sources */,
+				A293E3C8279F32A60090A465 /* Pie.swift in Sources */,
 				A27D8F172785F272005FBC91 /* ContentView.swift in Sources */,
 				A28B582F279668AB0046C8B5 /* MemoryGame.swift in Sources */,
 				A27D8F152785F272005FBC91 /* GameApp.swift in Sources */,
