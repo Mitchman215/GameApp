@@ -30,3 +30,9 @@ struct Pie: Shape {
     }
     
 }
+
+struct Pie_Previews: PreviewProvider {
+    static var previews: some View {
+        Pie(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 120))
+    }
+}

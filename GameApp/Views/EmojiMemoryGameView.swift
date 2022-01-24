@@ -12,6 +12,20 @@ struct EmojiMemoryGameView: View {
     
     var body: some View {
         VStack {
+            topUI()
+        
+            AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
+                CardView(card)
+                    .padding(Constants.betweenCardsPadding)
+                    .onTapGesture { theGame.choose(card) }
+            }
+            .foregroundColor(theGame.color)
+        }
+        .padding(.horizontal)
+    }
+    
+    private func topUI() -> some View {
+        VStack {
             Text("Memorize \(theGame.selectedTheme.name)!")
                 .bold()
                 .font(.largeTitle)
@@ -19,9 +33,7 @@ struct EmojiMemoryGameView: View {
             HStack {
                 Text("Score: \(theGame.score)")
                     .font(.title2)
-                
                 Spacer()
-                
                 Button {
                     theGame.startNewGame()
                 } label: {
@@ -32,15 +44,7 @@ struct EmojiMemoryGameView: View {
                 }
             }
             .padding(.horizontal)
-        
-            AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
-                CardView(card)
-                    .padding(Constants.betweenCardsPadding)
-                    .onTapGesture { theGame.choose(card) }
-            }
-            .foregroundColor(theGame.color)
         }
-        .padding(.horizontal)
     }
     
     private struct Constants {

@@ -112,8 +112,7 @@
 				A27D8F162785F272005FBC91 /* ContentView.swift */,
 				A27D8F2B2785F4CC005FBC91 /* SelectionView.swift */,
 				A27D8F3E27938ACE005FBC91 /* EmojiMemoryGameView.swift */,
-				A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */,
-				A293E3C7279F32A60090A465 /* Pie.swift */,
+				A293E3C9279F38450090A465 /* Common */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +155,15 @@
 				A27D8F3C278D4382005FBC91 /* LinkedList.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A293E3C9279F38450090A465 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A293E3C5279F0CAC0090A465 /* AspectVGrid.swift */,
+				A293E3C7279F32A60090A465 /* Pie.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
