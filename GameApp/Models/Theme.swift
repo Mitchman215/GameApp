@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A set of emojis centered around a theme to be used to create a concentration game
 struct Theme {
     let name: String
     let emojis: [String]
@@ -20,6 +21,7 @@ struct Theme {
         self.numberOfStartingPairs = min(numberOfStartingPairs, emojis.count)
     }
     
+    /// The default themes used
     static let defaults = [
         Theme(name: "Vehicles", emojis: ["🚕", "🚗", "🚙", "🚌", "🚎", "🏎", "🚜", "🚑", "🚲", "✈️", "🚤", "🛸", "🛺"],
               color: "orange", numberOfStartingPairs: 11),

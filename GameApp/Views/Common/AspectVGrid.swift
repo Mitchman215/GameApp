@@ -7,11 +7,19 @@
 
 import SwiftUI
 
+/// Displays all the items in an array with dynamically resizing child views that fill all the given space while maintaining an aspect ratio;
+/// Arranges the children views in a grid that grows vertically like a LazyVGrid with no spacing in between them
 struct AspectVGrid<Item, ItemView>: View where Item: Identifiable, ItemView: View {
+    /// The items to display
     var items: [Item]
+    
+    /// The aspect ratio to maintain on all the child views
     var aspectRatio: CGFloat
+    
+    /// The ViewBuilder function used to create the child views based on each individual item in the array
     var content: (Item) -> ItemView
     
+    /// Memberwise initializer to create an AspectVGrid
     init(items: [Item], aspectRatio: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
         self.items = items
         self.aspectRatio = aspectRatio
@@ -22,7 +30,7 @@ struct AspectVGrid<Item, ItemView>: View where Item: Identifiable, ItemView: Vie
     var body: some View {
         GeometryReader { geo in
             VStack {
-                let width: CGFloat = widthThatFits(itemCount: items.count, in: geo.size, itemAspectRatio: aspectRatio)
+                let width = widthThatFits(itemCount: items.count, in: geo.size, itemAspectRatio: aspectRatio)
                 LazyVGrid(columns: [adaptiveGridItem(width: width)], spacing: 0) {
                     ForEach(items) { item in
                         content(item).aspectRatio(aspectRatio, contentMode: .fit)
@@ -39,6 +47,7 @@ struct AspectVGrid<Item, ItemView>: View where Item: Identifiable, ItemView: Vie
         return gridItem
     }
     
+    /// Calculates the correct width to maximally fit all the items into the space specified by `size` while maintaining an aspect ratio
     private func widthThatFits(itemCount: Int, in size: CGSize, itemAspectRatio: CGFloat) -> CGFloat {
         var columnCount = 1
         var rowCount = itemCount

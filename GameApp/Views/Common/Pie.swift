@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+/// A pie chart shape
 struct Pie: Shape {
+    /// The angle to start the pie shape at
     var startAngle: Angle
+    /// The angle to finish the pie shape at
     var endAngle: Angle
+    /// Whether to draw the pie shape in a clockwise direction
     var clockwise: Bool = false
     
     func path(in rect: CGRect) -> Path {
@@ -24,6 +28,7 @@ struct Pie: Shape {
         p.move(to: center)
         p.addLine(to: start)
         p.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: !clockwise)
+        // note: we negate clockwise to accomodate the upward-view users think of when specifying clockwise
         p.addLine(to: center)
         
         return p

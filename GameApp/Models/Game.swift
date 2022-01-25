@@ -6,16 +6,19 @@
 //
 
 import Foundation
-import SwiftUI
 
-enum AvailableGames: String, CaseIterable {
+/// All the available games in the app
+enum AvailableGames: String, CaseIterable, Identifiable {
     case ticTacToe = "Tic-Tac-Toe"
     case connect4 = "Connect Four"
     case chess = "Chess"
-    case memorize = "Memorize"
+    case concentration = "Concentration"
+    case set = "Set"
     
-    var name: String {self.rawValue}
-    var imageName: String {name}
+    var name: String { self.rawValue }
+    var id: String { name }
+    var imageName: String { name }
+    /// A short description of the rules for each game
     var description: String {
         switch self {
         case .ticTacToe:
@@ -38,35 +41,20 @@ enum AvailableGames: String, CaseIterable {
                     In order to win, one player must checkmate the other by threatening to capture their king
                     and preventing the king from being able to escape.
                     """
-        case .memorize:
+        case .concentration:
             return """
                     Memorize is a singleplayer game where pairs of face-down cards must be matched with each other.
                     A maximum of two cards can be face up at one time, and if a match is not established between those two cards,
                     they will be flipped over again. The goal is to match all the cards in the shortest time.
                     """
+        default: return "Description not set"
         }
     }
 }
 
-enum Player {
-    case player0
-    case player1
-}
-
-class Piece {
-    let player: Player
-    init(player: Player) {
-        self.player = player
-    }
-}
-
+// TODO: To be expaned in the future
 protocol Game {
     var gameType: AvailableGames { get }
+    var score: Int { get }
     var player0Name: String { get }
-}
-
-protocol TwoPlayerBoardGame: Game {
-    var player1Name: String { get }
-    var board: [[Piece?]] { get set }
-    var whoseTurn: Player { get set }
 }

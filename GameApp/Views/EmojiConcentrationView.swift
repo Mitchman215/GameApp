@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The view for an emoji concentration game
 struct EmojiConcentrationView: View {
     @ObservedObject var theGame: EmojiConcentration
     
@@ -24,6 +25,7 @@ struct EmojiConcentrationView: View {
         .padding(.horizontal)
     }
     
+    /// Returns the UI for the title, score, and new game button
     private func topUI() -> some View {
         VStack {
             Text("Match the \(theGame.selectedTheme.name)!")
@@ -55,6 +57,7 @@ struct EmojiConcentrationView: View {
 
 
 
+/// The view for displaying a specific concentration game card
 struct CardView: View {
     private let card: EmojiConcentration.Card
     
