@@ -48,7 +48,7 @@ class EmojiConcentration: ObservableObject {
         }
     }
     
-    // MARK: - Intent(s)
+    // MARK: - Intents
     func choose(_ card: Card) {
         model.choose(card)
     }

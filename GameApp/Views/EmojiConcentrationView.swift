@@ -13,10 +13,10 @@ struct EmojiConcentrationView: View {
     
     var body: some View {
         VStack {
-            topUI()
+            header()
         
             AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
-                CardView(card)
+                ConcentrationCardView(card)
                     .padding(Constants.betweenCardsPadding)
                     .onTapGesture { theGame.choose(card) }
             }
@@ -26,7 +26,7 @@ struct EmojiConcentrationView: View {
     }
     
     /// Returns the UI for the title, score, and new game button
-    private func topUI() -> some View {
+    private func header() -> some View {
         VStack {
             Text("Match the \(theGame.selectedTheme.name)!")
                 .bold()
@@ -58,7 +58,7 @@ struct EmojiConcentrationView: View {
 
 
 /// The view for displaying a specific concentration game card
-struct CardView: View {
+struct ConcentrationCardView: View {
     private let card: EmojiConcentration.Card
     
     init(_ card: EmojiConcentration.Card) {
@@ -68,20 +68,12 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-                if card.isFaceUp {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                    Pie(startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 30))
-                        .padding(DrawingConstants.backCirclePadding)
-                        .opacity(DrawingConstants.backCircleOpacity)
-                    Text(card.content).font(font(in: geo.size))
-                } else if card.isMatched{
-                    shape.opacity(0)
-                } else {
-                    shape.fill()
-                }
+                Pie(startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 30))
+                    .padding(DrawingConstants.backCirclePadding)
+                    .opacity(DrawingConstants.backCircleOpacity)
+                Text(card.content).font(font(in: geo.size))
             }
+            .cardify(isFaceUp: card.isFaceUp)
         }
     }
     
@@ -90,8 +82,6 @@ struct CardView: View {
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 10
-        static let lineWidth: CGFloat = 3
         static let backCirclePadding: CGFloat = 5
         static let backCircleOpacity: CGFloat = 0.5
         static let fontScale: CGFloat = 0.7

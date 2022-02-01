@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  GameProtocol.swift
 //  GameApp
 //
 //  Created by Mitchell Salomon on 1/5/22.
@@ -53,7 +53,7 @@ enum AvailableGames: String, CaseIterable, Identifiable {
 }
 
 // TODO: To be expaned in the future
-protocol Game {
+protocol GameProtocol {
     var gameType: AvailableGames { get }
     var score: Int { get }
     var player0Name: String { get }
