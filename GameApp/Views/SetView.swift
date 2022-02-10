@@ -14,6 +14,8 @@ struct SetView: View {
         VStack {
             header()
             
+            Divider()
+            
             AspectVGrid(items: theGame.selectableCards, aspectRatio: Constants.cardAspectRatio) { card in
                 SetCardView(card)
                     .padding(Constants.paddingBetweenCards)
@@ -21,7 +23,7 @@ struct SetView: View {
                         print(card)
                     }
             }
-            .padding()
+            .padding(.horizontal)
         }
     }
     
@@ -42,7 +44,9 @@ struct SetView: View {
                 
                 Text("Score: _")
                     .font(.title2)
+                
                 Spacer()
+                
                 Button {
                     theGame.startNewGame()
                 } label: {
@@ -75,7 +79,7 @@ struct SetCardView: View {
     }
     
     @ViewBuilder
-    var strokedSymbol: some View {
+    private var strokedSymbol: some View {
         switch card.shape {
         case .zero: Diamond().stroke()
         case .one: Rectangle().stroke()
@@ -84,7 +88,7 @@ struct SetCardView: View {
     }
     
     @ViewBuilder
-    var filledSymbol: some View {
+    private var filledSymbol: some View {
         switch card.shape {
         case .zero: Diamond().fill()
         case .one: Rectangle().fill()
@@ -92,14 +96,14 @@ struct SetCardView: View {
         }
     }
     
-    var shadedSymbol: some View {
+    private var shadedSymbol: some View {
         ZStack {
             strokedSymbol
             filledSymbol.opacity(Constants.shadedOpacity)
         }
     }
     
-    var color: Color {
+    private var color: Color {
         switch card.color {
         case .zero: return .blue
         case .one: return .green
@@ -107,24 +111,25 @@ struct SetCardView: View {
         }
     }
     
+    @ViewBuilder
+    private var symbols: some View {
+        HStack {
+            ForEach(-1..<card.number.val) { _ in
+                switch card.shading {
+                case .zero: strokedSymbol.aspectRatio(Constants.symbolAspectRatio, contentMode: .fit)
+                case .one: shadedSymbol.aspectRatio(Constants.symbolAspectRatio, contentMode: .fit)
+                case .two: filledSymbol.aspectRatio(Constants.symbolAspectRatio, contentMode: .fit)
+                }
+            }
+            
+        }
+        .padding(Constants.symbolPadding)
+        .foregroundColor(color)
+    }
     
     
     var body: some View {
-        GeometryReader { geo in
-                HStack {
-                    ForEach(-1..<card.number.val) { _ in
-                        switch card.shading {
-                        case .zero: strokedSymbol.aspectRatio(Constants.symbolAspectRatio, contentMode: .fit)
-                        case .one: shadedSymbol.aspectRatio(Constants.symbolAspectRatio, contentMode: .fit)
-                        case .two: filledSymbol.aspectRatio(Constants.symbolAspectRatio, contentMode: .fit)
-                        }
-                    }
-                    
-                }
-                .padding(Constants.symbolPadding)
-                .foregroundColor(color)
-            .cardify(isFaceUp: true)
-        }
+        symbols.cardify()
     }
     
     private struct Constants {

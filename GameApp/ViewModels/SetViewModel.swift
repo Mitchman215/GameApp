@@ -36,6 +36,6 @@ class SetViewModel: ObservableObject {
     
     
     func startNewGame() {
-        
+        model = SetGame();
     }
 }

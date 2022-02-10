@@ -10,7 +10,7 @@ import SwiftUI
 /// A ViewModifier that puts the specified view onto a card that can be flipped over
 struct Cardify: ViewModifier {
     /// Whether the card is flipped over
-    var isFaceUp = true
+    var isFaceUp: Bool
     
     func body(content: Content) -> some View {
         ZStack {
@@ -33,7 +33,7 @@ struct Cardify: ViewModifier {
 }
 
 extension View {
-    func cardify(isFaceUp: Bool) -> some View {
+    func cardify(isFaceUp: Bool = true) -> some View {
         self.modifier(Cardify(isFaceUp: isFaceUp))
     }
 }

@@ -14,6 +14,8 @@ struct EmojiConcentrationView: View {
     var body: some View {
         VStack {
             header()
+            
+            Divider()
         
             AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
                 ConcentrationCardView(card)
