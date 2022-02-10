@@ -11,7 +11,21 @@ class SetViewModel: ObservableObject {
     typealias Card = SetGame.Card
     @Published private var model = SetGame()
     var selectableCards: [Card] {
-        Array(model.selectable)
+        model.selectable
+    }
+    
+    func cardStrokeColor(_ card: Card) -> Color {
+        if model.selected.contains(card) {
+            if model.selectedAreMatch == nil {
+                return .blue
+            } else if model.selectedAreMatch! {
+                return .green
+            } else {
+                return .red
+            }
+        } else {
+            return .black
+        }
     }
     
     @ViewBuilder
@@ -26,12 +40,12 @@ class SetViewModel: ObservableObject {
     
     // MARK: - Intents
     
-    func select(_ card: Card) {
-        
+    func touch(_ card: Card) {
+        model.touch(card)
     }
     
     func deal() {
-        model.dealCards(howMany: 3)
+        model.standardDeal()
     }
     
     

@@ -12,11 +12,14 @@ struct Cardify: ViewModifier {
     /// Whether the card is flipped over
     var isFaceUp: Bool
     
+    /// The background color when the card is flipped over
+    var backgroundColor: Color = .white
+    
     func body(content: Content) -> some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
             if isFaceUp {
-                shape.fill().foregroundColor(.white)
+                shape.fill().foregroundColor(backgroundColor)
                 shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
                 
             } else {
@@ -33,8 +36,8 @@ struct Cardify: ViewModifier {
 }
 
 extension View {
-    func cardify(isFaceUp: Bool = true) -> some View {
-        self.modifier(Cardify(isFaceUp: isFaceUp))
+    func cardify(isFaceUp: Bool = true, backgroundColor: Color = .white) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp, backgroundColor: backgroundColor))
     }
 }
 

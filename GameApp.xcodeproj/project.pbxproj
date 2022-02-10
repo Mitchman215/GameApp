@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A21CCAEA27B4DE2400EFCFE1 /* GameAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CCAE927B4DE2400EFCFE1 /* GameAppTests.swift */; };
 		A27D8F152785F272005FBC91 /* GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F142785F272005FBC91 /* GameApp.swift */; };
 		A27D8F172785F272005FBC91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F162785F272005FBC91 /* ContentView.swift */; };
 		A27D8F192785F274005FBC91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27D8F182785F274005FBC91 /* Assets.xcassets */; };
@@ -32,7 +33,19 @@
 		A2A7405E27A1020100443132 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7405D27A1020100443132 /* Diamond.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A21CCAEB27B4DE2400EFCFE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A27D8F092785F272005FBC91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A27D8F102785F272005FBC91;
+			remoteInfo = GameApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		A21CCAE727B4DE2400EFCFE1 /* GameAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A21CCAE927B4DE2400EFCFE1 /* GameAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppTests.swift; sourceTree = "<group>"; };
 		A27D8F112785F272005FBC91 /* GameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27D8F142785F272005FBC91 /* GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameApp.swift; sourceTree = "<group>"; };
 		A27D8F162785F272005FBC91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +73,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A21CCAE427B4DE2400EFCFE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A27D8F0E2785F272005FBC91 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,10 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A21CCAE827B4DE2400EFCFE1 /* GameAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				A21CCAE927B4DE2400EFCFE1 /* GameAppTests.swift */,
+			);
+			path = GameAppTests;
+			sourceTree = "<group>";
+		};
 		A27D8F082785F272005FBC91 = {
 			isa = PBXGroup;
 			children = (
 				A27D8F132785F272005FBC91 /* GameApp */,
+				A21CCAE827B4DE2400EFCFE1 /* GameAppTests */,
 				A27D8F122785F272005FBC91 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				A27D8F112785F272005FBC91 /* GameApp.app */,
+				A21CCAE727B4DE2400EFCFE1 /* GameAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +205,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A21CCAE627B4DE2400EFCFE1 /* GameAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A21CCAEF27B4DE2400EFCFE1 /* Build configuration list for PBXNativeTarget "GameAppTests" */;
+			buildPhases = (
+				A21CCAE327B4DE2400EFCFE1 /* Sources */,
+				A21CCAE427B4DE2400EFCFE1 /* Frameworks */,
+				A21CCAE527B4DE2400EFCFE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A21CCAEC27B4DE2400EFCFE1 /* PBXTargetDependency */,
+			);
+			name = GameAppTests;
+			productName = GameAppTests;
+			productReference = A21CCAE727B4DE2400EFCFE1 /* GameAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A27D8F102785F272005FBC91 /* GameApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A27D8F242785F274005FBC91 /* Build configuration list for PBXNativeTarget "GameApp" */;
@@ -202,6 +250,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					A21CCAE627B4DE2400EFCFE1 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = A27D8F102785F272005FBC91;
+					};
 					A27D8F102785F272005FBC91 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -221,11 +273,19 @@
 			projectRoot = "";
 			targets = (
 				A27D8F102785F272005FBC91 /* GameApp */,
+				A21CCAE627B4DE2400EFCFE1 /* GameAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A21CCAE527B4DE2400EFCFE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A27D8F0F2785F272005FBC91 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,6 +298,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A21CCAE327B4DE2400EFCFE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A21CCAEA27B4DE2400EFCFE1 /* GameAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A27D8F0D2785F272005FBC91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,7 +336,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A21CCAEC27B4DE2400EFCFE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A27D8F102785F272005FBC91 /* GameApp */;
+			targetProxy = A21CCAEB27B4DE2400EFCFE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A21CCAED27B4DE2400EFCFE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 845Q48W2V4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MitchellSalomon.GameAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameApp.app/GameApp";
+			};
+			name = Debug;
+		};
+		A21CCAEE27B4DE2400EFCFE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 845Q48W2V4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MitchellSalomon.GameAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameApp.app/GameApp";
+			};
+			name = Release;
+		};
 		A27D8F222785F274005FBC91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -446,6 +558,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A21CCAEF27B4DE2400EFCFE1 /* Build configuration list for PBXNativeTarget "GameAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A21CCAED27B4DE2400EFCFE1 /* Debug */,
+				A21CCAEE27B4DE2400EFCFE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A27D8F0C2785F272005FBC91 /* Build configuration list for PBXProject "GameApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -18,9 +18,10 @@ struct SetView: View {
             
             AspectVGrid(items: theGame.selectableCards, aspectRatio: Constants.cardAspectRatio) { card in
                 SetCardView(card)
+                    .foregroundColor(theGame.cardStrokeColor(card))
                     .padding(Constants.paddingBetweenCards)
                     .onTapGesture {
-                        print(card)
+                        theGame.touch(card)
                     }
             }
             .padding(.horizontal)
