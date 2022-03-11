@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A21CCAEA27B4DE2400EFCFE1 /* GameAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CCAE927B4DE2400EFCFE1 /* GameAppTests.swift */; };
+		A21CCAEA27B4DE2400EFCFE1 /* SetGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CCAE927B4DE2400EFCFE1 /* SetGameTests.swift */; };
 		A27D8F152785F272005FBC91 /* GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F142785F272005FBC91 /* GameApp.swift */; };
 		A27D8F172785F272005FBC91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D8F162785F272005FBC91 /* ContentView.swift */; };
 		A27D8F192785F274005FBC91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27D8F182785F274005FBC91 /* Assets.xcassets */; };
@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		A21CCAE727B4DE2400EFCFE1 /* GameAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A21CCAE927B4DE2400EFCFE1 /* GameAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppTests.swift; sourceTree = "<group>"; };
+		A21CCAE927B4DE2400EFCFE1 /* SetGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameTests.swift; sourceTree = "<group>"; };
 		A27D8F112785F272005FBC91 /* GameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27D8F142785F272005FBC91 /* GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameApp.swift; sourceTree = "<group>"; };
 		A27D8F162785F272005FBC91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		A21CCAE827B4DE2400EFCFE1 /* GameAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A21CCAE927B4DE2400EFCFE1 /* GameAppTests.swift */,
+				A21CCAE927B4DE2400EFCFE1 /* SetGameTests.swift */,
 			);
 			path = GameAppTests;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A21CCAEA27B4DE2400EFCFE1 /* GameAppTests.swift in Sources */,
+				A21CCAEA27B4DE2400EFCFE1 /* SetGameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

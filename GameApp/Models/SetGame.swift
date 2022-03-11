@@ -116,8 +116,10 @@ struct SetGame {
     }
     
     /// Returns true if either all the items are equal or none of them are equal to each other; returns false otherwise
-    private func allOrNoneEqual<Item: Hashable>(_ items: Item...) -> Bool {
+    private func allOrNoneEqual<Item: Hashable>(_ items: [Item]) -> Bool {
+        print(items)
         let itemsAsSet = Set(items)
+        print(itemsAsSet)
         return (itemsAsSet.count == 1) || (itemsAsSet.count == items.count)
     }
     
@@ -151,7 +153,7 @@ extension String {
 }
 
 
-/// A data structure that has three possible states
+/// A data structure that has three possible states: zero, one, and two
 enum Trilean: Int, CaseIterable {
     case zero, one, two
     var val: Int { self.rawValue }
