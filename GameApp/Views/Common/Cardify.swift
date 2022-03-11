@@ -21,7 +21,6 @@ struct Cardify: ViewModifier {
             if isFaceUp {
                 shape.fill().foregroundColor(backgroundColor)
                 shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                
             } else {
                 shape.fill()
             }
