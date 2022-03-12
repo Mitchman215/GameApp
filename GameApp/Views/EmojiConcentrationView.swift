@@ -31,7 +31,11 @@ struct EmojiConcentrationView: View {
             } else {
                 ConcentrationCardView(card)
                     .padding(Constants.betweenCardsPadding)
-                    .onTapGesture { theGame.choose(card) }
+                    .onTapGesture {
+                        withAnimation {
+                            theGame.choose(card)
+                        }
+                    }
             }
         }
         .foregroundColor(theGame.color)
@@ -39,7 +43,9 @@ struct EmojiConcentrationView: View {
     
     var shuffle: some View {
         Button("Shuffle") {
-            theGame.shuffle()
+            withAnimation {
+                theGame.shuffle()
+            }
         }
     }
     
