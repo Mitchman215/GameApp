@@ -57,4 +57,8 @@ class EmojiConcentration: ObservableObject {
         selectedTheme = Theme.defaults.randomElement()!
         model = EmojiConcentration.createNewGame(with: selectedTheme)
     }
+    
+    func shuffle() {
+        model.shuffle()
+    }
 }

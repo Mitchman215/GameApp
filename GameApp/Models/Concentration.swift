@@ -64,6 +64,11 @@ struct Concentration<CardContent> where CardContent: Equatable {
         }
     }
     
+    /// Shuffles the cards
+    mutating func shuffle() {
+        cards.shuffle()
+    }
+    
     /// Represents an individual card in Concentration
     struct Card: Identifiable {
         let content: CardContent

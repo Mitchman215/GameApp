@@ -17,14 +17,30 @@ struct EmojiConcentrationView: View {
             
             Divider()
         
-            AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
+            gameBody
+            
+            shuffle
+        }
+        .padding()
+    }
+    
+    var gameBody: some View {
+        AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
+            if card.isMatched && !card.isFaceUp {
+                Color.clear
+            } else {
                 ConcentrationCardView(card)
                     .padding(Constants.betweenCardsPadding)
                     .onTapGesture { theGame.choose(card) }
             }
-            .foregroundColor(theGame.color)
         }
-        .padding(.horizontal)
+        .foregroundColor(theGame.color)
+    }
+    
+    var shuffle: some View {
+        Button("Shuffle") {
+            theGame.shuffle()
+        }
     }
     
     /// Returns the UI for the title, score, and new game button
