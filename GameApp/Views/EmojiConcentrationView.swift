@@ -11,6 +11,8 @@ import SwiftUI
 struct EmojiConcentrationView: View {
     @ObservedObject var theGame: EmojiConcentration
     
+    @Namespace private var dealingNamespace
+    
     var body: some View {
         VStack {
             header()
@@ -19,18 +21,24 @@ struct EmojiConcentrationView: View {
         
             gameBody
             
+            deckBody
+            
             shuffle
         }
         .padding()
     }
     
+    //MARK: Game View
     var gameBody: some View {
-        AspectVGrid(items: theGame.cards, aspectRatio: Constants.aspectRatio) { card in
-            if card.isMatched && !card.isFaceUp {
+        AspectVGrid(items: theGame.cards, aspectRatio: CardConstants.aspectRatio) { card in
+            if isUndealt(card) || (card.isMatched && !card.isFaceUp) {
                 Color.clear
             } else {
                 ConcentrationCardView(card)
-                    .padding(Constants.betweenCardsPadding)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .padding(CardConstants.betweenCardsPadding)
+                    .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
+                    .zIndex(zIndex(of: card))
                     .onTapGesture {
                         withAnimation {
                             theGame.choose(card)
@@ -41,6 +49,7 @@ struct EmojiConcentrationView: View {
         .foregroundColor(theGame.color)
     }
     
+    // MARK: Shuffle Button
     var shuffle: some View {
         Button("Shuffle") {
             withAnimation {
@@ -49,6 +58,7 @@ struct EmojiConcentrationView: View {
         }
     }
     
+    // MARK: Header
     /// Returns the UI for the title, score, and new game button
     private func header() -> some View {
         VStack {
@@ -73,9 +83,60 @@ struct EmojiConcentrationView: View {
         }
     }
     
-    private struct Constants {
+    //MARK: Deck
+    var deckBody: some View {
+        ZStack {
+            ForEach(theGame.cards.filter(isUndealt)) { card in
+                ConcentrationCardView(card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity))
+                    .zIndex(zIndex(of: card))
+            }
+        }
+        .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(theGame.color)
+        .onTapGesture {
+            // "deal" cards
+            for card in theGame.cards {
+                withAnimation(dealAnimation(for: card)) {
+                    deal(card)
+                }
+            }
+        }
+    }
+    
+    // MARK: Dealing Animation Functionality
+    /// Termporary state variable that keeps tracks of which cards (by id) have been dealt out
+    @State private var dealt = Set<Int>()
+    
+    private func deal(_ card: EmojiConcentration.Card) {
+        dealt.insert(card.id)
+    }
+    
+    private func isUndealt(_ card: EmojiConcentration.Card) -> Bool {
+        !dealt.contains(card.id)
+    }
+    
+    private func dealAnimation(for card: EmojiConcentration.Card) -> Animation {
+        var delay = 0.0
+        if let index = theGame.cards.firstIndex(where: { $0.id == card.id }) {
+            delay = Double(index) * (CardConstants.totalDealDuration / Double(theGame.cards.count))
+        }
+        return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
+    }
+    
+    private func zIndex(of card: EmojiConcentration.Card) -> Double {
+        -Double(theGame.cards.firstIndex(where: { $0.id == card.id }) ?? 0)
+    }
+    
+    // MARK: Card Constants
+    private struct CardConstants {
         static let aspectRatio: CGFloat = 2/3
         static let betweenCardsPadding: CGFloat = 4
+        static let dealDuration: Double = 0.5
+        static let totalDealDuration: Double = 2
+        static let undealtHeight: CGFloat = 90
+        static let undealtWidth = undealtHeight * aspectRatio
     }
 }
 
