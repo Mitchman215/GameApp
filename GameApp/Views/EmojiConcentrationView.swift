@@ -14,16 +14,19 @@ struct EmojiConcentrationView: View {
     @Namespace private var dealingNamespace
     
     var body: some View {
-        VStack {
-            header()
+        ZStack(alignment: .bottom) {
+            VStack {
+                header()
+                
+                Divider()
             
-            Divider()
-        
-            gameBody
-            
+                gameBody
+                
+                deckBody
+                
+                shuffle
+            }
             deckBody
-            
-            shuffle
         }
         .padding()
     }
@@ -58,6 +61,21 @@ struct EmojiConcentrationView: View {
         }
     }
     
+    // MARK: New Game Button
+    var newGameButton: some View {
+        Button {
+            withAnimation {
+                dealt = []
+                theGame.startNewGame()
+            }
+        } label: {
+            VStack {
+                Image(systemName: "plus.circle").font(.title)
+                Text("New Game").font(.subheadline)
+            }
+        }
+    }
+    
     // MARK: Header
     /// Returns the UI for the title, score, and new game button
     private func header() -> some View {
@@ -70,14 +88,7 @@ struct EmojiConcentrationView: View {
                 Text("Score: \(theGame.score)")
                     .font(.title2)
                 Spacer()
-                Button {
-                    theGame.startNewGame()
-                } label: {
-                    VStack {
-                        Image(systemName: "plus.circle").font(.title)
-                        Text("New Game").font(.subheadline)
-                    }
-                }
+                newGameButton
             }
             .padding(.horizontal)
         }
@@ -150,12 +161,26 @@ struct ConcentrationCardView: View {
         self.card = card
     }
     
+    @State private var animatedBonusRemaining: Double = 0
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Pie(startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 30))
-                    .padding(DrawingConstants.backCirclePadding)
-                    .opacity(DrawingConstants.backCircleOpacity)
+                Group {
+                    if card.isConsumingBonusTime {
+                        Pie(startAngle: Angle(degrees: -90), endAngle: Angle(degrees: (1 - animatedBonusRemaining) * 360 - 90))
+                            .onAppear {
+                                animatedBonusRemaining = card.bonusRemaining
+                                withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+                                    animatedBonusRemaining = 0
+                                }
+                            }
+                    } else {
+                        Pie(startAngle: Angle(degrees: -90), endAngle: Angle(degrees: (1 - card.bonusRemaining) * 360 - 90))
+                    }
+                }
+                .padding(DrawingConstants.backCirclePadding)
+                .opacity(DrawingConstants.backCircleOpacity)
                 Text(card.content)
                     .rotationEffect(Angle.degrees(card.isMatched  ? 360 : 0))
                     .animation(Animation.easeInOut(duration: 1), value: card.isMatched)
