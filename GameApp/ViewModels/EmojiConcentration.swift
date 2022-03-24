@@ -17,7 +17,7 @@ class EmojiConcentration: ObservableObject {
         model.cards
     }
     var score: Int {
-        model.score
+        Int(model.score.rounded())
     }
     
     /// Dictionary used to convert the color names stored in themes to Color objects
@@ -56,5 +56,9 @@ class EmojiConcentration: ObservableObject {
     func startNewGame() {
         selectedTheme = Theme.defaults.randomElement()!
         model = EmojiConcentration.createNewGame(with: selectedTheme)
+    }
+    
+    func shuffle() {
+        model.shuffle()
     }
 }
