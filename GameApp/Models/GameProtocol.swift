@@ -54,7 +54,7 @@ enum AvailableGames: String, CaseIterable, Identifiable {
 
 // TODO: To be expaned in the future
 protocol GameProtocol {
-    var gameType: AvailableGames { get }
-    var score: Int { get }
+    var score: Double { get }
+    // TODO: make player model to replace
     var player0Name: String { get }
 }

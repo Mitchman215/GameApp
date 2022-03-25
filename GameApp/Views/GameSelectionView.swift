@@ -11,25 +11,37 @@ import SwiftUI
 // TODO: Add functionality to actually start and navigate to the games when the user clicks on them
 struct GameSelectionView: View {
     var body: some View {
-        VStack {
-            Text("Select a game to play")
-                .bold()
-                .padding(.top)
-                .font(.title)
-        
-                AspectVGrid(items: AvailableGames.allCases, aspectRatio: 1) { game in
-                    ZStack(alignment: .bottom) {
-                        Image(game.imageName)
-                            .resizable()
-                            .opacity(Constants.imageOpacity)
-                            .cornerRadius(Constants.imageCornerRadius)
-                        
-                        Text(game.name)
-                            .bold()
-                            .font(.title2)
+        NavigationView {
+            AspectVGrid(items: AvailableGames.allCases, aspectRatio: 1) { game in
+                NavigationLink {
+                    switch game {
+                    case .concentration:
+                        EmojiConcentrationView(theGame: EmojiConcentration())
+                    case .set:
+                        SetView(theGame: SetViewModel())
+                    default:
+                        Text("Play \(game.name)!")
                     }
-                    .padding(Constants.paddingBetweenGames)
+                } label: {
+                    gameIcon(game)
                 }
+                .padding(Constants.paddingBetweenGames)
+            }
+            .navigationTitle("Game selection")
+        }
+    }
+    
+    func gameIcon(_ game: AvailableGames) -> some View {
+        ZStack(alignment: .bottom) {
+            Image(game.imageName)
+                .resizable()
+                .opacity(Constants.imageOpacity)
+                .cornerRadius(Constants.imageCornerRadius)
+            
+            Text(game.name)
+                .bold()
+                .font(.title2)
+                .foregroundColor(.black)
         }
     }
     

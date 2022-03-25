@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GameModel: ObservableObject {
+class GameController: ObservableObject {
     
     @Published var currentGame: AvailableGames?
 }

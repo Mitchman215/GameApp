@@ -15,7 +15,19 @@ struct GameApp: App {
 
     var body: some Scene {
         WindowGroup {
-            EmojiConcentrationView(theGame: game)
+            TabView {
+                GameSelectionView()
+                    .tabItem {
+                        Image(systemName: "gamecontroller")
+                        Text("Games")
+                    }
+                
+                Text("Profile tab")
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Stats")
+                    }
+            }
 //            SetView(theGame: game)
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
