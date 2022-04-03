@@ -10,25 +10,23 @@ import SwiftUI
 struct SetView: View {
     @ObservedObject var theGame = SetViewModel()
     
+    @Namespace private var dealingNamespace
+    
     var body: some View {
-        VStack {
-            header()
-            
-            Divider()
-            
-            AspectVGrid(items: theGame.selectableCards, aspectRatio: Constants.cardAspectRatio) { card in
-                SetCardView(card)
-                    .foregroundColor(theGame.cardStrokeColor(card))
-                    .padding(Constants.paddingBetweenCards)
-                    .onTapGesture {
-                        theGame.touch(card)
-                    }
+        ZStack(alignment: .bottom) {
+            VStack {
+                header
+                
+                Divider()
+                
+                gameBody
+                    .padding(.horizontal)
             }
-            .padding(.horizontal)
+            deckBody
         }
     }
     
-    private func header() -> some View {
+    var header: some View {
         VStack {
             Text("Set!")
                 .bold()
@@ -58,6 +56,40 @@ struct SetView: View {
         }
     }
     
+    var gameBody: some View {
+        AspectVGrid(items: theGame.selectableCards, aspectRatio: Constants.cardAspectRatio) { card in
+            SetCardView(card)
+                .foregroundColor(theGame.cardStrokeColor(card))
+                .padding(Constants.paddingBetweenCards)
+                .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
+                .zIndex(zIndex(of: card, in: theGame.selectableCards))
+                .onTapGesture {
+                    theGame.touch(card)
+                }
+        }
+    }
+    
+    // MARK: Deck
+    var deckBody: some View {
+        ZStack {
+            ForEach(theGame.deckCards) { card in
+                SetCardView(card, isFaceUp: true)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .opacity))
+                    .zIndex(zIndex(of: card, in: theGame.deckCards))
+            }
+        }
+        .frame(width: Constants.deckWidth, height: Constants.deckHeight)
+        .foregroundColor(Constants.deckColor)
+        .onTapGesture {
+            // "deal" cards
+            withAnimation(dealAnimation()) {
+                theGame.deal()
+            }
+        }
+    }
+    
     private func buttonLabel(sfImage: String, text: String) -> some View {
         VStack {
             Image(systemName: sfImage).font(.title)
@@ -68,15 +100,32 @@ struct SetView: View {
     private struct Constants {
         static let cardAspectRatio: CGFloat = 3/2
         static let paddingBetweenCards: CGFloat = 4
+        static let deckHeight: CGFloat = 90
+        static let deckWidth = deckHeight * cardAspectRatio
+        static let deckColor: Color = .red
+        
+        static let dealDuration: Double = 2
+        static let dealDelay: Double = 0.2
+    }
+    
+    private func dealAnimation() -> Animation {
+        return Animation.easeInOut(duration: Constants.dealDuration)
+    }
+    
+    /// Returns the zIndex of the card in the list, or 0 if the card isn't in the list. Larger indices are to be placed in front of smaller indices.
+    private func zIndex(of card: SetGame.Card, in list: [SetGame.Card]) -> Double {
+        -Double(list.firstIndex(where: { $0.id == card.id }) ?? 0)
     }
 }
 
 
 struct SetCardView: View {
     private let card: SetGame.Card
+    private let faceUp: Bool
     
-    init(_ card: SetGame.Card) {
+    init(_ card: SetGame.Card, isFaceUp: Bool = true) {
         self.card = card
+        self.faceUp = isFaceUp
     }
     
     @ViewBuilder
@@ -130,7 +179,7 @@ struct SetCardView: View {
     
     
     var body: some View {
-        symbols.cardify()
+        symbols.cardify(isFaceUp: faceUp)
     }
     
     private struct Constants {

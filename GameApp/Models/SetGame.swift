@@ -10,7 +10,7 @@ import Foundation
 /// A singleplayer game of Set
 struct SetGame {
     /// The cards currently in the deck
-    private var deck: Set<Card> = SetGame.allCards
+    private(set) var deck: [Card] = SetGame.allCards.shuffled()
     
     /// The revealed cards that can be selected by players
     private(set) var selectable: [Card] = []
@@ -24,17 +24,17 @@ struct SetGame {
     }
     
     /// Cards that have been matched and thus are out of the game
-    private var matched: Set<Card> = []
+    private(set) var matched: [Card] = []
     
     
     /// Returns a set containing all the 81 possible configuration of cards
-    private static var allCards: Set<Card> {
-        var cards: Set<Card> = []
+    private static var allCards: [Card] {
+        var cards: [Card] = []
         for shape in Trilean.allCases {
             for color in Trilean.allCases {
                 for shading in Trilean.allCases {
                     for number in Trilean.allCases {
-                        cards.insert(Card(shape: shape, color: color, shading: shading, number: number))
+                        cards.append(Card(shape: shape, color: color, shading: shading, number: number))
                     }
                 }
             }
@@ -53,8 +53,9 @@ struct SetGame {
     /// Attempts to move the specified number of random cards from `deck` to `selectable`
     private mutating func dealCards(howMany numCards: Int) {
         for _ in 0..<numCards {
-            if let toDeal = deck.randomElement() {
-                selectable.append(deck.remove(toDeal)!)
+            if !deck.isEmpty {
+                let toDeal = deck.removeFirst()
+                selectable.append(toDeal)
             } else {
                 print("Deck out of cards to deal")
                 break
@@ -82,7 +83,7 @@ struct SetGame {
             // deselect each selected card and move them into `matched`
             selected.forEach { card in
                 deselect(card)
-                matched.insert(card)
+                matched.append(card)
             }
             
             // if touched card was not part of the matching set, select it

@@ -30,6 +30,7 @@
 		A2A7405A27A079E600443132 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7405927A079E600443132 /* SetView.swift */; };
 		A2A7405C27A07A6800443132 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7405B27A07A6800443132 /* SetGame.swift */; };
 		A2A7405E27A1020100443132 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A7405D27A1020100443132 /* Diamond.swift */; };
+		A2AF651927F4B6EC00D5A859 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF651827F4B6EC00D5A859 /* UtilityExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		A2A7405927A079E600443132 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		A2A7405B27A07A6800443132 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		A2A7405D27A1020100443132 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		A2AF651827F4B6EC00D5A859 /* UtilityExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 		A27D8F2F2785F8B8005FBC91 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A2AF651827F4B6EC00D5A859 /* UtilityExtensions.swift */,
 				A27D8F3A278D42E1005FBC91 /* Stack.swift */,
 				A27D8F3C278D4382005FBC91 /* LinkedList.swift */,
 			);
@@ -324,6 +327,7 @@
 				A27D8F2C2785F4CC005FBC91 /* GameSelectionView.swift in Sources */,
 				A27D8F2E2785F7BE005FBC91 /* GameModel.swift in Sources */,
 				A27D8F3D278D4382005FBC91 /* LinkedList.swift in Sources */,
+				A2AF651927F4B6EC00D5A859 /* UtilityExtensions.swift in Sources */,
 				A27D8F332786043D005FBC91 /* GameProtocol.swift in Sources */,
 				A2A6392F27A1E746009B68A0 /* Cardify.swift in Sources */,
 				A28B5833279DC5CA0046C8B5 /* Theme.swift in Sources */,

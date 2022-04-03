@@ -16,7 +16,7 @@ struct EmojiConcentrationView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
-                header()
+                header
                 
                 Divider()
             
@@ -29,6 +29,38 @@ struct EmojiConcentrationView: View {
             deckBody
         }
         .padding()
+    }
+    
+    // MARK: Header
+    /// Returns the UI for the title, score, and new game button
+    var header: some View {
+        VStack {
+            Text("Match the \(theGame.selectedTheme.name)!")
+                .bold()
+                .font(.largeTitle)
+            
+            HStack {
+                Text("Score: \(theGame.score)")
+                    .font(.title2)
+                Spacer()
+                newGameButton
+            }
+            .padding(.horizontal)
+        }
+    }
+    
+    var newGameButton: some View {
+        Button {
+            withAnimation {
+                dealt = []
+                theGame.startNewGame()
+            }
+        } label: {
+            VStack {
+                Image(systemName: "plus.circle").font(.title)
+                Text("New Game").font(.subheadline)
+            }
+        }
     }
     
     //MARK: Game View
@@ -50,48 +82,6 @@ struct EmojiConcentrationView: View {
             }
         }
         .foregroundColor(theGame.color)
-    }
-    
-    // MARK: Shuffle Button
-    var shuffle: some View {
-        Button("Shuffle") {
-            withAnimation {
-                theGame.shuffle()
-            }
-        }
-    }
-    
-    // MARK: New Game Button
-    var newGameButton: some View {
-        Button {
-            withAnimation {
-                dealt = []
-                theGame.startNewGame()
-            }
-        } label: {
-            VStack {
-                Image(systemName: "plus.circle").font(.title)
-                Text("New Game").font(.subheadline)
-            }
-        }
-    }
-    
-    // MARK: Header
-    /// Returns the UI for the title, score, and new game button
-    private func header() -> some View {
-        VStack {
-            Text("Match the \(theGame.selectedTheme.name)!")
-                .bold()
-                .font(.largeTitle)
-            
-            HStack {
-                Text("Score: \(theGame.score)")
-                    .font(.title2)
-                Spacer()
-                newGameButton
-            }
-            .padding(.horizontal)
-        }
     }
     
     //MARK: Deck
@@ -116,6 +106,15 @@ struct EmojiConcentrationView: View {
         }
     }
     
+    // MARK: Shuffle Button
+    var shuffle: some View {
+        Button("Shuffle") {
+            withAnimation {
+                theGame.shuffle()
+            }
+        }
+    }
+    
     // MARK: Dealing Animation Functionality
     /// Termporary state variable that keeps tracks of which cards (by id) have been dealt out
     @State private var dealt = Set<Int>()
@@ -136,6 +135,7 @@ struct EmojiConcentrationView: View {
         return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
     }
     
+    /// used to ensure that the cards are stacked on top of each other in the right order when in the deck and when dealing out
     private func zIndex(of card: EmojiConcentration.Card) -> Double {
         -Double(theGame.cards.firstIndex(where: { $0.id == card.id }) ?? 0)
     }

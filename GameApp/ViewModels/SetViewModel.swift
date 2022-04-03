@@ -14,6 +14,14 @@ class SetViewModel: ObservableObject {
         model.selectable
     }
     
+    var deckCards: [Card] {
+        model.deck
+    }
+    
+    var discardedCards: [Card] {
+        model.matched
+    }
+    
     func cardStrokeColor(_ card: Card) -> Color {
         if model.selected.contains(card) {
             if model.selectedAreMatch == nil {
